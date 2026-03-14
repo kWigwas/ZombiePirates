@@ -54,7 +54,7 @@ public class EnemyBehavior : MonoBehaviour
     public float rotationSpeed = 120f;
 
     [Header("Scene Names")]
-    public string gameSceneName = "Ocean";
+    public string gameSceneName = "Combat";
 
     // -------------------------------------------------------
     //  Private state

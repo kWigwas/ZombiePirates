@@ -140,6 +140,7 @@ MonoBehaviour:
   idleDirectionChangeInterval: 3
   idleMaxTurnDegrees: 45
   rotationSpeed: 120
+  gameSceneName: Combat
 --- !u!70 &1204681511004736451
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
