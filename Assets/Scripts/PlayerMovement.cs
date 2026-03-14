@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
         if (canMove && !isRolling)
             PlayerMoveKeyboard();
 
-        if (moveX != 0 && !isRolling) 
-            sr.flipX = moveX < 0;
+        //if (moveX != 0 && !isRolling) 
+        //    sr.flipX = moveX < 0;
 
         ApplyRotation();
 
@@ -160,9 +160,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveX != 0 || moveY != 0)
         {
-            // Where player WANTs to look
-            float targetAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg;
-            // Where player's currently looking
+            // Subtract 90° to account for sprite facing UP instead of RIGHT
+            float targetAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg - 90f;
             float currentAngle = transform.eulerAngles.z;
 
             float smoothAngle = Mathf.LerpAngle(currentAngle, targetAngle, rotationSpeed * Time.unscaledDeltaTime);
