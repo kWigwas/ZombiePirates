@@ -92,7 +92,7 @@ public class CombatSceneAutoSetup : MonoBehaviour
         controller.beatInterval = 0.6f;
         controller.noteSpeed = 3.2f;
         controller.missLineY = -3.95f;
-        controller.explorationSceneName = "SampleScene";
+        //controller.explorationSceneName = "Ocean";
         controller.runtimeSprite = runtimeSprite;
         controller.notesParent = notesParent;
         //controller.playerShip = playerShip.root;
