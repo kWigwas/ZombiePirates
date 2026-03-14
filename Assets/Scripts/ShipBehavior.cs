@@ -1,22 +1,22 @@
 using UnityEngine;
 
 /// <summary>
-/// EnemyBehavior � Top-Down Pirate Game
+/// EnemyBehavior — Top-Down Pirate Game
 /// -------------------------------------------------------
 /// Attach to an enemy ship GameObject.
 ///
 /// States:
-///   Idle    � enemy drifts slowly on its own heading.
-///   Flee    � player has entered fleeRadius; enemy moves
+///   Idle    — enemy drifts slowly on its own heading.
+///   Flee    — player has entered fleeRadius; enemy moves
 ///             directly away at fleeSpeed.
-///   Combat  � player has entered combatRadius; enemy stops
+///   Combat  — player has entered combatRadius; enemy stops
 ///             fleeing and signals the CombatManager to begin
 ///             an encounter (implement OnCombatEngage as needed).
 ///
 /// Requirements:
-///   � Rigidbody2D on this GameObject (Gravity Scale = 0).
-///   � A GameObject tagged "Player" in the scene.
-///   � (Optional) A CombatManager in the scene with a static
+///   • Rigidbody2D on this GameObject (Gravity Scale = 0).
+///   • A GameObject tagged "Player" in the scene.
+///   • (Optional) A CombatManager in the scene with a static
 ///     StartCombat(GameObject enemy) method.
 /// </summary>
 
@@ -35,11 +35,11 @@ public class EnemyBehavior : MonoBehaviour
     public float combatRadius = 2f;
 
     [Header("Movement Speeds")]
-    [Tooltip("Speed at which the enemy flees the player.")]
-    public float fleeSpeed = 3f;
+    [Tooltip("Same unit as player moveForce (default 6). At 6 the enemy matches the player exactly.")]
+    public float fleeSpeed = 4f;        // slightly slower than player so player can always catch up
 
-    [Tooltip("Gentle drift speed while in the Idle state.")]
-    public float idleDriftSpeed = 0.5f;
+    [Tooltip("Same unit as player moveForce (default 6). Gentle drift while idle.")]
+    public float idleDriftSpeed = 1.5f;
 
     [Header("Idle Drift")]
     [Tooltip("How often (seconds) the enemy picks a new idle drift direction.")]
@@ -75,7 +75,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
-        rb.linearDamping = 0.5f;
+        rb.linearDamping = 0f;          // No drag — velocity is set directly, same as player
 
         // Pick a random initial drift direction
         idleDriftDirection = Random.insideUnitCircle.normalized;
@@ -84,7 +84,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        // Find player by tag � make sure your player GameObject is tagged "Player"
+        // Find player by tag — make sure your player GameObject is tagged "Player"
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             playerTransform = playerObj.transform;
@@ -202,7 +202,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     // -------------------------------------------------------
-    //  Combat hook � wire up to your CombatManager here
+    //  Combat hook — wire up to your CombatManager here
     // -------------------------------------------------------
 
     /// <summary>
@@ -211,24 +211,24 @@ public class EnemyBehavior : MonoBehaviour
     /// </summary>
     private void OnCombatEngage()
     {
-        //Debug.Log($"[EnemyBehavior] Combat engaged with {gameObject.name}!");
+        Debug.Log($"[EnemyBehavior] Combat engaged with {gameObject.name}!");
 
         // Example: CombatManager.Instance.StartCombat(this.gameObject);
         // Example: GameEvents.OnCombatStart?.Invoke(this.gameObject);
     }
 
     // -------------------------------------------------------
-    //  Editor gizmos � visible in the Scene view
+    //  Editor gizmos — visible in the Scene view
     // -------------------------------------------------------
 
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        // Flee radius � yellow
+        // Flee radius — yellow
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, fleeRadius);
 
-        // Combat radius � red
+        // Combat radius — red
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, combatRadius);
     }

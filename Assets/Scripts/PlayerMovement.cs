@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         normalColliderOffset = collider.offset;
 
         myBody.gravityScale = 0f;
+        myBody.freezeRotation = true;
     }
 
     void Start()
