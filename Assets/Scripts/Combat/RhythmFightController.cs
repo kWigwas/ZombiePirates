@@ -153,6 +153,7 @@ void HandleInputs()
         {
             wrongPresses++;
             ShowFeedback("MISS!", new Color(1f, 0.45f, 0.45f));
+            ApplyInputMiss();
             //ShakeShip(playerShip, playerShipBasePos, 0.06f, 0.08f);
             RefreshProgress();
             continue;
@@ -253,6 +254,13 @@ void RunSpawner()
         EndCombat();
     }
 
+    void ApplyInputMiss()
+    {
+        missNotes++;
+        judgedNotes++;
+        ShowFeedback("MISS!", new Color(1f, 0.45f, 0.45f));
+        RefreshProgress();
+    }
     void EndCombat()
     {
         combatEnded = true;
