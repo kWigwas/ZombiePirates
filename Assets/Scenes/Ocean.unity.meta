@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Ocean.unity.meta
 guid: 0c6e080aa6e9ddc488a2e97d5e667a67
+========
+guid: bd080be6cf58459859cfb2edda9b31c9
+>>>>>>>> 63a6e571064eb45fe68159c12e6062c304bb0071:Assets/Scenes/Menu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
