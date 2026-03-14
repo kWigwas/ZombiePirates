@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior
   fleeRadius: 25
-  combatRadius: 8
-  fleeSpeed: 18
+  combatRadius: 10
+  fleeSpeed: 14
   idleDriftSpeed: 8
   idleDirectionChangeInterval: 3
   idleMaxTurnDegrees: 45
