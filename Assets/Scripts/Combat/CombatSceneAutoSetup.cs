@@ -51,7 +51,7 @@ public class CombatSceneAutoSetup : MonoBehaviour
     laneSR.sprite = runtimeSprite;
     laneSR.color = GetLaneTint(i);
     laneSR.sortingOrder = 2;
-    laneGO.transform.localScale = new Vector3(1.22f, 8.7f, 1f);
+    laneGO.transform.localScale = new Vector3(1.22f, 1f, 1f);
 
     RhythmLane lane = laneGO.AddComponent<RhythmLane>();
     lane.key = (RhythmLane.LaneKey)i;
@@ -67,7 +67,7 @@ public class CombatSceneAutoSetup : MonoBehaviour
 
     GameObject marker = new GameObject("HitMarker");
     marker.transform.position = hitPointGO.transform.position;
-    marker.transform.localScale = new Vector3(1.36f, 0.22f, 1f);
+    marker.transform.localScale = new Vector3(1.36f, 1f, 1f);
 
     SpriteRenderer markerSR = marker.AddComponent<SpriteRenderer>();
     markerSR.sprite = runtimeSprite;
