@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// EnemyBehavior — Top-Down Pirate Game
@@ -51,6 +52,9 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Visuals / Rotation")]
     [Tooltip("How quickly the ship rotates to face its movement direction (degrees/sec).")]
     public float rotationSpeed = 120f;
+
+    [Header("Scene Names")]
+    public string gameSceneName = "Ocean";
 
     // -------------------------------------------------------
     //  Private state
@@ -212,6 +216,8 @@ public class EnemyBehavior : MonoBehaviour
     private void OnCombatEngage()
     {
         Debug.Log($"[EnemyBehavior] Combat engaged with {gameObject.name}!");
+
+        SceneManager.LoadScene(gameSceneName);
 
         // Example: CombatManager.Instance.StartCombat(this.gameObject);
         // Example: GameEvents.OnCombatStart?.Invoke(this.gameObject);
